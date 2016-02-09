@@ -22,3 +22,5 @@ El objetivo de la aplicación es que sea capaz tanto de mostrar los distintos co
 7.	Permitir votar elementos de la carta.
 
 8.	Ofrecer descuentos en base a las compras que se realizan.
+
+hasjdfhkldj
