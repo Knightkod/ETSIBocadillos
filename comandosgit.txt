@@ -1,0 +1,11 @@
+
+  451  git clone https://github.com/pablojusue/Public.git prueba
+  453  cd prueba/
+  455  git pull https://github.com/TiT-2016/Public.git
+  456  gedit README.md 
+  457  git add README.md
+  458  git commit -m "NOMBRE" 
+  459  git push origin master
+  460  git pull https://github.com/TiT-2016/Public.git
+  461  git request-pull  master origin
+  462  history >comandosgit.txt
