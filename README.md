@@ -1,4 +1,4 @@
-# ETSIBocadillos  jijijiji
+# ETSIBocadillos
 El objetivo de la aplicación es que sea capaz tanto de mostrar los distintos componentes de la carta del local de restauración como atender los pedidos de los clientes y remitírselos al local. Las características que debe tener son:
 
 1.	Registro de cuenta en el local físico, para obtener una cuenta que permita realizar pedidos. Todas las labores de gestión de cuenta y recarga del saldo asociado a la cuenta deben realizarse en el local.
@@ -23,4 +23,3 @@ El objetivo de la aplicación es que sea capaz tanto de mostrar los distintos co
 
 8.	Ofrecer descuentos en base a las compras que se realizan.
 
-hasjdfhkldj
