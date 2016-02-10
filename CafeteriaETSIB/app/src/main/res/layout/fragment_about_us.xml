@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sanzfdu.cafeteriaetsib.pl.About_us">
+
+    <TextView
+        android:id="@+id/texto1"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:text="Esta app se empezó a cocer porque muchos se preguntaban que bocadillos
+    tienen qué ingredientes, que bocadillos existen, que comian un determinado dia que andaban dudosos...\n
+    Si eras uno de estos, entonces espero que esta aplicacion te sirva.
+    \n\n
+    Quiero agradecer especialmente a Xabier Sanz por haberme ayudado
+    con el diseño de la aplicacion y a todos los que habeis aguantado mis rabietas
+    y quebraderos de cabeza.\n
+    May the force be with you!"
+        android:textColor="@color/textColor"
+        />
+    <TextView
+        android:id="@+id/texto2"
+        android:layout_below="@+id/texto1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+
+        android:text="Contacto:
+        \n
+        Pablo = qlehqweq@asqe.com"
+        android:textColor="@color/textColor"
+        />
+    <Button
+        android:id="@+id/buttonReturn"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/texto2"
+        android:layout_centerHorizontal="true"
+        android:text="Volver a Inicio"/>
+
+</RelativeLayout>

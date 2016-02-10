@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sanzfdu.cafeteriaetsib.pl.MenuPrincipal">
+
+        <!--OJO! en width y en height podriamos poner que sea wrap-content para que se ajuste al tamaño del texto
+        pero no se, mejor así y son todos del mismo tamaño!-->
+    <!--NOTA: AQUI   android:layout_gravity="right" y todos esos creo que no valen para nada, porque en otro formato como
+    las tablas y tal si te lo centra, lo pone a izquierda o derecha... de la celda, pero aqui le estamos diciendo de donde
+    empieza el cuadro y el tamaño AlturaxAnchura, asi que ¿para que?-->
+    <TextView android:text="ETSIBocadillos"
+        android:id="@+id/text"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="75dp"
+
+        android:textSize="40dp"
+        android:textStyle="bold"
+    />
+
+
+    <ImageButton
+        android:id="@+id/imagebutton"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/text"
+        android:layout_centerHorizontal="true"
+
+        android:adjustViewBounds="true"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:scaleType="fitCenter"
+
+        android:background="@drawable/shuffle_button"
+        android:src="@drawable/mediashuffle"
+        />
+    <!--EIIIII, acordarse que los padding te permiten que, dentro del boton limites la foto.
+    Si yo quiero que las flechas esten mas arriba aumento paddingBottom y si lo quiero mas abajo
+    paddingTop. Esto hara la imagen algo mas pequeña, la dimensiona para adaptarse-->
+    <TextView
+        android:layout_below="@id/imagebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+
+        android:text="RANDOM!"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        />
+
+
+</RelativeLayout>
