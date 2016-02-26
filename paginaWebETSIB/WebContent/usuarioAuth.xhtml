@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/Templates/authLayout.xhtml">
+	<ui:define name="TituloDocumento">CAFETERIA ETSIB</ui:define>
+	<ui:define name="TituloPagina1"><h1> </h1></ui:define>
+	<ui:define name="contenido1">
+
+<h:form class="formAuth">
+			<p>
+			<h:outputLabel styleClass="label">DNI</h:outputLabel>
+			<h:inputText id="dni" value="#{clienteBean.cliente3.dni}" styleClass="DNI"
+				required="true" requiredMessage="El campo dni está en blanco!"></h:inputText><br/>
+			</p>
+			<p>
+			<h:outputLabel styleClass="label">Password</h:outputLabel>
+			<h:inputSecret id="contrasena" value="#{clienteBean.cliente3.password}" styleClass="passwd"
+				required="true" requiredMessage="El campo contraseña está en blanco!"></h:inputSecret><br/>	
+			</p>	
+			<p>
+			<h:outputLabel styleClass="label">Hora de recogida   (hh:mm):</h:outputLabel>
+				<h:inputText id="hora" value="#{clienteBean.cliente3.horaRecogida}" styleClass="horaRec"
+				required="true" requiredMessage="Introduce una hora de recogida por favor"></h:inputText><br/>	
+			</p>
+			<p>
+			<h:outputLabel value="Pedido:" styleClass="label"></h:outputLabel>
+			<h:inputText id="pedidoActual" value="#{clienteBean.cliente3.pedidoActual}" styleClass="DNI"></h:inputText><br/>	
+			</p><p> 
+			<h:outputLabel styleClass="label">A pagar:</h:outputLabel>
+			<h:inputText id="costeTotal" value="#{clienteBean.costeTotal}" styleClass="DNI"></h:inputText><br/>	
+			</p>
+		
+			<h:commandButton actionListener="#{clienteBean.comprAndBuy(clienteBean.cliente3.dni,clienteBean.cliente3.password,
+			clienteBean.cliente3.horaRecogida,clienteBean.cliente3.pedidoActual)}" id="submit" styleClass="submitButt"
+				value="Enviar" />
+				
+			<h:panelGroup rendered="#{clienteBean.getmensAuth()}">
+				<h:outputLabel value="#{clienteBean.respuesta()}" styleClass="errMessage"></h:outputLabel>
+			</h:panelGroup>
+			
+	<br/><h:message for="dni" errorClass="errMessage"/><br/>
+	<h:message for="contrasena" errorClass="errMessage"/><br/>
+	<h:message for="hora" errorClass="errMessage"/>
+		
+</h:form>		
+	</ui:define>
+</ui:composition>
+</html>

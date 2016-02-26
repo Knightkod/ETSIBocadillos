@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/Templates/layout.xhtml">
+	<ui:define name="TituloDocumento">CAFETERIA ETSIB</ui:define>
+	<ui:define name="TituloPagina1"><h1>Bienvenido administrador</h1></ui:define>
+	<ui:define name="contenido1">
+	
+	<h:form>
+	
+	<h2>Clientes</h2>
+		<h:dataTable value="#{clienteBean.listaCli}" var="client" border="3"
+		styleClass="clientTable"
+		headerClass="clientRow-header"
+		rowClasses="clientRow-even,clientRow-odd">
+			<h:column>
+				<f:facet name="header">DNI</f:facet>
+				#{client.dni}
+			</h:column>
+			<h:column>
+			<f:facet name="header">Password</f:facet>
+				*********
+			</h:column>
+			<h:column>
+				<f:facet name="header">Saldo</f:facet>
+				#{client.saldo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Pedido actual</f:facet>
+				#{client.pedidoActual}
+			</h:column>		
+			<h:column>
+				<f:facet name="header">Eliminar usuario</f:facet>
+				<h:commandButton actionListener="#{clienteBean.borraCli(client.dni)}" id="delCli"
+				value="Eliminar"/>
+			</h:column>			
+		</h:dataTable>
+	</h:form>
+	
+	<h4>Introducir nuevo usuario:</h4>
+	<h:form>
+			<h:dataTable value="" var="" border="3"
+				styleClass="clientTable2"
+				headerClass="clientRow-header-blue"
+				rowClasses="clientRow-even,clientRow-odd">
+				<h:column>
+				<f:facet name="header">DNI</f:facet>
+					<h:inputText id="dni" value="#{clienteBean.cliente.dni}"
+					required="true" requiredMessage="El campo DNI está en blanco!"></h:inputText>
+				</h:column>
+				
+				<h:column>
+				<f:facet name="header">Password</f:facet>
+				<h:inputSecret id="contrasena" value="#{clienteBean.cliente.password}"
+					required="true" requiredMessage="El campo contrasena está en blanco!"></h:inputSecret>
+				</h:column>
+				<h:column>
+				<f:facet name="header">Accion</f:facet>
+				<h:commandButton actionListener="#{clienteBean.addCli()}" id="submit"
+					value="Añadir" />
+				</h:column>
+			</h:dataTable>
+		<h:panelGroup rendered="#{clienteBean.getCorrect2()}">
+			<h:outputLabel value="#{clienteBean.toString2()}"></h:outputLabel>
+		</h:panelGroup>
+		<h:message for="dni" errorClass="errMessage"/>
+		<h:message for="contrasena" errorClass="errMessage" />
+	</h:form>
+	<h:form>
+	
+	<h2>Recarga de saldo</h2>
+	
+		<h4>Introduzca el DNI del cliente:</h4>
+			<h:dataTable value="" var="" border="3"
+			styleClass="clientTable2"
+				headerClass="clientRow-header-green"
+				rowClasses="clientRow-even,clientRow-odd">
+				<h:column>
+				<f:facet name="header">DNI</f:facet>
+					<h:inputText id="dni" value="#{clienteBean.cliente2.dni}"
+					required="true" requiredMessage="El campo DNI está en blanco!"></h:inputText>
+				</h:column>			
+				<h:column>
+				<f:facet name="header">Accion</f:facet>
+				<h:commandButton actionListener="#{clienteBean.searchCli(clienteBean.cliente2.dni)}" id="search"
+					value="Buscar" />
+				</h:column>
+			</h:dataTable>
+		
+			<h:dataTable value="#{clienteBean.cliente2}" var="client" border="3"
+				styleClass="clientTable2"
+				headerClass="clientRow-header-green"
+				rowClasses="clientRow-even,clientRow-odd">
+				<h:column>
+					<f:facet name="header">DNI</f:facet>
+					#{client.dni}
+				</h:column>			
+				<h:column>
+					<f:facet name="header">Saldo Actual</f:facet>
+					#{client.saldo}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Cantidad a introducir</f:facet>
+					<h:inputText id="saldo" value="#{clienteBean.cantidadIntro}"
+					required="true" requiredMessage="El campo de la cantidad a introducir está en blanco!"></h:inputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Añadir saldo</f:facet>
+					<h:commandButton actionListener="#{clienteBean.addCash(client.dni)}" id="addCash"
+					value="Anadir saldo"/>
+				</h:column>			
+			</h:dataTable>	
+		
+		<h:message for="dni" errorClass="errMessage" />
+	</h:form>	
+	
+</ui:define>
+</ui:composition>
+</html>

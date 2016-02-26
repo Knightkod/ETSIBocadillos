@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/Templates/layout.xhtml">
+	<ui:define name="TituloDocumento">CAFETERIA ETSIB</ui:define>
+	<ui:define name="TituloPagina1"><h1>Pedidos pendientes:</h1></ui:define>
+	<ui:define name="contenido1">
+<h:form>
+
+		<h:dataTable value="#{clienteBean.listaCliReducida}" var="client" border="3"
+		styleClass="clientTable2"
+		headerClass="clientRow-header-blue"
+		rowClasses="clientRow-even,clientRow-odd">
+			<h:column>
+				<f:facet name="header">DNI</f:facet>
+				#{client.dni}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Pedido actual</f:facet>
+				#{client.pedidoActual}
+			</h:column>		
+			<h:column>
+				<f:facet name="header">Hora recogida</f:facet>
+				#{client.horaRecogida}
+			</h:column>	
+			<h:column>
+				<f:facet name="header">Eliminar pedido del cliente</f:facet>
+				<h:commandButton actionListener="#{clienteBean.borraPedido(client.dni)}" id="delCli"
+				value="Servido!"/>
+			</h:column>			
+		</h:dataTable>
+		
+</h:form>		
+	</ui:define>
+</ui:composition>
+</html>

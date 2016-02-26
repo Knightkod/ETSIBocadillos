@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- SI FALLA ALGO, mirar este doctype en Inicio.xhtml y Final.xhtml porque puede que esté mal puesto -->
+<html xmlns = "http://www.w3.org/1999/xhtml"
+	xmlns:h = "http://java.sun.com/jsf/html"
+	xmlns:f = "http://java.sun.com/jsf/core"
+	xmlns:ui = "http://java.sun.com/jsf/facelets">
+<h:head>
+<meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8"></meta>
+<link rel="stylesheet" type="text/css"  href="generic.css"/>
+<!-- Esta linea es para poner el por defecto? -->
+<title><ui:insert name="TituloDocumento">Pagina default</ui:insert></title>
+</h:head>
+<h:body>
+<ui:insert name="TituloPagina1"><h1>Default default</h1></ui:insert><br/>
+<ui:insert name="contenido1"/>
+
+
+</h:body>
+</html>

@@ -1,0 +1,80 @@
+@CHARSET "UTF-8";
+
+
+h1{
+	text-align:center;
+	color: #dae9e6;}
+h2,h3,h4,h5,h6{
+	color: #dae9e6;}
+	
+.errMessage{
+	color: #f63636;}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #3b3b3b;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  background: #b84e00;
+}
+
+.clientTable {
+  margin: 0 0 40px 0;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: table;
+}
+
+.clientTable2 {
+  margin: 0 0 40px 0;
+  width: 70%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: table;
+}
+
+
+.clientTableVers {
+  margin: 0 0 40px 0;
+  width: 10%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: table;
+}
+
+.clientRow-header {
+  font-weight: 900;
+  text-align:center;
+  color: #ffffff;
+  background: #d700d5;
+}
+
+.clientRow-even {
+  text-align:center;
+  background:none repeat scroll 0 0 #b7b7b7;
+}
+.clientRow-odd {
+  text-align:center;
+  background:none repeat scroll 0 0 #e5e5e5;
+}
+
+.clientRow-header-green {
+  font-weight: 900;
+  text-align:center;
+  color: #ffffff;
+  background: #009f43;
+}
+.clientRow-header-blue {
+  font-weight: 900;
+  text-align:center;
+  color: #ffffff;
+  background: #2980b9;
+}
+@media screen and (max-width: 580px) {
+  .clientRow {
+    padding: 8px 0;
+    display: block;
+  }
+}
+
+

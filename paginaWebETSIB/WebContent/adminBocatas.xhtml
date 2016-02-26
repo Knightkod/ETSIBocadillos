@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/Templates/layout.xhtml">
+	<ui:define name="TituloDocumento">CAFETERIA ETSIB</ui:define>
+	<ui:define name="TituloPagina1"><h1>Bienvenido administrador</h1></ui:define>
+	<ui:define name="contenido1">
+	
+	<h2>Version de la base de datos</h2>
+		<h:dataTable value="#{versionBean.listaVers}" var="vers" border="3"
+		styleClass="clientTableVers"
+		headerClass="clientRow-header"
+		rowClasses="clientRow-even,clientRow-odd">
+			<h:column>
+				<f:facet name="header">Version</f:facet>
+				#{vers.version}
+			</h:column>
+		</h:dataTable>	
+	<h2>Bocadillos en la carta</h2>
+	<h:form>
+		<h:dataTable value="#{bocadilloBean.listaBoc}" var="boc" border="3"
+		styleClass="clientTable2"
+		headerClass="clientRow-header-blue"
+		rowClasses="clientRow-even,clientRow-odd">
+			<h:column>
+				<f:facet name="header">Nombre</f:facet>
+				#{boc.nombre}
+			</h:column>
+			<h:column>
+			<f:facet name="header">Precio</f:facet>
+				#{boc.precio}			
+			</h:column>				
+			<h:column>
+				<f:facet name="header">Ingredientes</f:facet>					
+				#{boc.ingredientes}	
+			</h:column>
+			<h:column>
+				<f:facet name="header">Eliminar bocadillo</f:facet>
+				<h:commandButton actionListener="#{bocadilloBean.borraBoc(boc.nombre)}" id="delCli"
+				value="Eliminar"/>
+			</h:column>			
+		</h:dataTable>
+	</h:form>
+	
+	<h4>Introducir nuevo bocadillo:</h4>
+	<h:form>
+			<h:dataTable value="" var="" border="3"
+			styleClass="clientTable2"
+				headerClass="clientRow-header-green"
+				rowClasses="clientRow-even,clientRow-odd">
+				<h:column>
+				<f:facet name="header">Nombre</f:facet>
+					<h:inputText id="nombre" value="#{bocadilloBean.bocadillo.nombre}"
+					required="true" requiredMessage="Introduzca un nombre para el bocadillo por favor."></h:inputText>
+				</h:column>
+				
+				<h:column>
+				<f:facet name="header">Precio</f:facet>
+				<h:inputText id="precio" value="#{bocadilloBean.bocadillo.precio}"
+					required="true" requiredMessage="Introduzca un precio para el bocadillo"></h:inputText>
+				</h:column>
+				<h:column>
+				<f:facet name="header">Ingredientes*</f:facet>
+				<h:inputText id="ingr" value="#{bocadilloBean.bocadillo.ingredientes}"
+					required="true" requiredMessage="Introduzca los ingredientes"></h:inputText>
+				</h:column>
+				<h:column>
+				<f:facet name="header">Accion</f:facet>
+				<h:commandButton actionListener="#{bocadilloBean.addBoc()}" id="submit"
+					value="Añadir" />
+				</h:column>
+			</h:dataTable>
+	
+			<h3>*NOTA: Por favor, introduzca los ingredientes separados por comas. Ejemplo: Ingrediente1,Ingrediente2 y sin espacios.</h3>
+		<h:panelGroup rendered="#{productBean.getCorrectAlta()}">
+			<h:outputLabel value="#{productBean.envRespuestaAlta()}"></h:outputLabel>
+		</h:panelGroup>		
+		<br/><h:message for="nombre" errorClass="errMessage"/>
+		<br/><h:message for="precio" errorClass="errMessage"/>
+		<br/><h:message for="ingr" errorClass="errMessage"/>
+	</h:form>	
+
+</ui:define>
+</ui:composition>
+</html>
