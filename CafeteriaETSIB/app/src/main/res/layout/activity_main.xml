@@ -1,0 +1,53 @@
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--Aqui salian unos padding para recortar
+    todo a lo que estuviera puesto (si es paddingLeft 16dp es que
+    esta 16 dp respecto a la izquierda, lo que pongamos en el layout
+     NO toca el borde de la pantalla por ese lado, esta separado 16dp)
+     por eso lo borramos, si no nos fastidia la toolbar-->
+
+    <!--NOTA: El settings esta deshabilitado a posta, cuando se quiera se puede poner-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/container_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+    </LinearLayout>
+        <!--Entiendo que este frame es donde se muestran los fragments de los menus y demas-->
+        <FrameLayout
+            android:id="@+id/container_body"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
+
+    </LinearLayout>
+
+    <!--Este fragmenes el menu lateral propiamente dicho, el NAVIGATION DRAWER-->
+    <fragment
+        android:id="@+id/fragment_navigation_drawer"
+        android:name="com.sanzfdu.cafeteriaetsib.pl.FragmentDrawer"
+        android:layout_width="@dimen/nav_drawer_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:layout="@layout/fragment_navigation_drawer"
+        tools:layout="@layout/fragment_navigation_drawer" />
+
+
+</android.support.v4.widget.DrawerLayout>

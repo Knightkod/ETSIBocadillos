@@ -1,0 +1,47 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+CREATE SCHEMA IF NOT EXISTS `clients` DEFAULT CHARACTER SET latin1 ;
+USE `clients` ;
+
+-- -----------------------------------------------------
+-- Table `clients`.`Cliente`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `clients`.`Cliente` ;
+
+CREATE TABLE IF NOT EXISTS `clients`.`Cliente` (
+  `DNI` VARCHAR(9) NOT NULL,
+  `Password` VARCHAR(45) NOT NULL,
+  `Saldo` VARCHAR(500) NOT NULL DEFAULT 0,
+  `PedidoActual` VARCHAR(500) NULL,
+  `HoraRecogida` VARCHAR(10) NULL,
+  PRIMARY KEY (`DNI`))
+ENGINE = InnoDB;
+
+-- Tablas de bocadillos
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `clients`.`Bocatas` ( 
+  `Nombre` VARCHAR(45) NOT NULL,
+                `Precio`FLOAT NOT NULL,
+                `Rate` FLOAT NOT NULL,
+                `Fav` FLOAT NOT NULL,
+                `Antiguedad` INTEGER NOT NULL,
+		`Ingredientes` VARCHAR (500) NOT NULL,
+  PRIMARY KEY (`Nombre`))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `clients`.`Gestion`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `clients`.`Gestion` ;
+
+CREATE TABLE IF NOT EXISTS `clients`.`Gestion` (
+  `version` INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (`version`))
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

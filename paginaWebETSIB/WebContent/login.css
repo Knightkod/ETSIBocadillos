@@ -1,0 +1,174 @@
+@CHARSET "UTF-8";
+
+
+h1{
+	text-align:center;
+	color: #dae9e6;}
+h2,h3,h4,h5,h6{
+	color: #dae9e6;}
+	.errMessage{
+	color: #f63636;}
+body {
+  background-image:url(img/bg.jpg);
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+
+.formAuth {
+	font-family: 'Ubuntu', 'Lato', sans-serif;
+    font-weight: 400;
+    /* Size and position */
+    width: 400px;
+    position: relative;
+    margin: 60px auto 30px;
+    padding: 10px;
+    overflow: hidden;
+
+    /* Styles */
+    background: #111; 
+    border-radius: 0.4em;
+    border: 1px solid #191919;
+    box-shadow: 
+        inset 0 0 2px 1px rgba(255,255,255,0.08), 
+        0 16px 10px -8px rgba(0, 0, 0, 0.6);
+}
+
+
+
+.label {
+    /* Size and position */
+    width: 45%;
+    float: left;
+    padding-top: 9px;
+
+    /* Styles */
+    color: #ddd;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 0 #000;
+    text-indent: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.DNI,.passwd,.horaRec{
+	    /* Size and position */
+    width: 45%;
+    float: left;
+    padding: 8px 5px;
+    margin-bottom: 10px;
+    font-size: 12px;
+
+    /* Styles */
+    background: linear-gradient(#1f2124, #27292c);    
+    border: 1px solid #000;
+    box-shadow:
+        0 1px 0 rgba(255,255,255,0.1);
+    border-radius: 3px;
+
+    /* Font styles */
+    font-family: 'Ubuntu', 'Lato', sans-serif;
+    color: #fff;
+}
+
+.DNI:hover,.passwd:hover,.horaRec:hover,.label:hover~.DNI,.label:hover~.passwd,.label:hover~.horaRec{
+	background:#27292c;
+	
+}
+
+/*Button*/
+
+.submitButt {
+    /* Width and position */
+    width: 100%;
+    margin-top: 20px;
+    padding: 8px 5px;
+  
+    /* Styles */
+    border: 1px solid #0273dd; /* Fallback */
+    border: 1px solid rgba(0,0,0,0.4);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.3),
+        inset 0 10px 10px rgba(255,255,255,0.1);
+    border-radius: 3px;
+    background: #38a6f0;
+    cursor:pointer;
+  
+    /* Font styles */
+    font-family: 'Ubuntu', 'Lato', sans-serif;
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
+}
+
+.submitButt:hover { 
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+.submitButt:active { 
+    background: #287db5;
+    box-shadow: inset 0 0 3px rgba(0,0,0,0.6);
+    border-color: #000; /* Fallback */
+    border-color: rgba(0,0,0,0.9);
+}
+
+.no-boxshadow .submitButt {
+    background: #2a92d8;
+}
+
+/* Gradient line */
+.formAuth:after {
+    /* Size and position */
+    content: "";
+    height: 1px;
+    width: 33%;
+    position: absolute;
+    left: 15.5%;
+    top: 0;
+
+    /* Styles, no se cual pero alguno o todos hacen ver la linea tan chuli que atraviesa el efecto flash */
+    background: -moz-linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
+    background: -ms-linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
+    background: -o-linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), color-stop(0.25, #444), color-stop(0.5, #b6b6b8), color-stop(0.75, #444), to(transparent));
+    background: -webkit-linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
+	background: linear-gradient(left, transparent, #444, #b6b6b8, #444, transparent);
+}
+
+/* Small flash */
+.formAuth:before {
+    /* Size and position */
+    content: "";
+    width: 7px;
+    height: 5px;
+    position: absolute;
+    left: 31%;
+    top: -7px;
+    
+    /* Styles */
+    border-radius: 50%;
+    box-shadow: 0 0 12px 8px #fff;
+    
+}
+
+/*por que child 2???*/
+.formAuth p:nth-child(2):before{
+    /* Size and position */
+    content: "";
+    width: 130%;
+    height: 50%;
+    position: absolute;
+    top: 0;
+    left: -6%;
+
+    /* Styles */
+    transform: rotate(75deg);
+    background: linear-gradient(50deg, rgba(255,255,255,0.15), rgba(0,0,0,0));
+    pointer-events: none;
+}
+.no-pointerevents .formAuth p:nth-child(1):before {
+    display: none;
+}
+
