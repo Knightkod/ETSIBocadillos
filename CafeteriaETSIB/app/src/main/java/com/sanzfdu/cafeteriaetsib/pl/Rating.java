@@ -152,10 +152,13 @@ public class Rating extends Fragment {
                     }
                     if(pedido.size()==0)
                         Toast.makeText(getActivity().getApplicationContext(), "Debe seleccionar al menos un bocadillo para poder comprar", Toast.LENGTH_SHORT).show();
-                    else
-                        //Falta poner la funcion de comprobacion de internet y de compra, que va a ir en otra clase
-                        Toast.makeText(getActivity().getApplicationContext(), "Pedido enviado. El pedido consta de los bocadillos " + names +
-                                " y el precio es de " + costeTot + " euros.", Toast.LENGTH_SHORT).show();
+                    else {
+                        FragmentManager fragmentManager = getFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        Fragment_web fragWeb = new Fragment_web();
+                        fragmentTransaction.replace(R.id.container_body,fragWeb);
+                        fragmentTransaction.commit();
+                    }
                 }
                 else
                     Toast.makeText(getActivity().getApplicationContext(),"Por favor, conectese a internet para realizar el pedido."

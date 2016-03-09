@@ -119,8 +119,16 @@ public class Randomize extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if(NetworkConnect.compruebaConexion(getActivity().getApplicationContext()))
-                    Pedido.realizaPedido(dListAdapter, getActivity().getApplicationContext());
+                if(NetworkConnect.compruebaConexion(getActivity().getApplicationContext())) {
+                    if(Pedido.realizaPedido(dListAdapter, getActivity().getApplicationContext())) {
+
+                        FragmentManager fragmentManager = getFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        Fragment_web fragWeb = new Fragment_web();
+                        fragmentTransaction.replace(R.id.container_body, fragWeb);
+                        fragmentTransaction.commit();
+                    }
+                }
                 else
                     Toast.makeText(getActivity().getApplicationContext(),"Por favor, conectese a internet para realizar el pedido."
                             , Toast.LENGTH_SHORT).show();

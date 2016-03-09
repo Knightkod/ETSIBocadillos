@@ -3,9 +3,6 @@ package com.sanzfdu.cafeteriaetsib.pl;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -15,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -26,7 +22,6 @@ import com.sanzfdu.cafeteriaetsib.bl.NetworkConnect;
 import com.sanzfdu.cafeteriaetsib.bl.Pedido;
 import com.sanzfdu.cafeteriaetsib.bl.TextAdapter;
 import com.sanzfdu.cafeteriaetsib.bl.DataListAdapter;
-import com.sanzfdu.cafeteriaetsib.bl.MySQL;
 import com.sanzfdu.cafeteriaetsib.dl.Bocata;
 
 import java.util.ArrayList;
@@ -118,9 +113,16 @@ public class List_complete_filters extends Fragment {
         btnPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(NetworkConnect.compruebaConexion(getActivity().getApplicationContext())) {
+                    if(Pedido.realizaPedido(dListAdapter, getActivity().getApplicationContext())) {
 
-                if(NetworkConnect.compruebaConexion(getActivity().getApplicationContext()))
-                    Pedido.realizaPedido(dListAdapter,getActivity().getApplicationContext());
+                        FragmentManager fragmentManager = getFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        Fragment_web fragWeb = new Fragment_web();
+                        fragmentTransaction.replace(R.id.container_body, fragWeb);
+                        fragmentTransaction.commit();
+                    }
+                }
                 else
                     Toast.makeText(getActivity().getApplicationContext(),"Por favor, conectese a internet para realizar el pedido."
                             , Toast.LENGTH_SHORT).show();
