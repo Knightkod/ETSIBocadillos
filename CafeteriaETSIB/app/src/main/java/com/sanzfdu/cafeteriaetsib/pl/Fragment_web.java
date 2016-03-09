@@ -35,7 +35,10 @@ public class Fragment_web extends Fragment {
         WebSettings settings = myWebView.getSettings();
         settings.setJavaScriptEnabled(true);
         //codigo javascript para rellenar parte del formulario de pedido. solo funciona con tagName y no con byId, no se porque
-        final String js="document.getElementsByTagName('input')[4].value = '" + Pedido.getNames() + "';document.getElementsByTagName('input')[5].value = '"+ Pedido.getCosteTot() + "';";
+        final String js="document.getElementsByTagName('span')[0].innerHTML = '" + Pedido.getNames() + "';" +
+                "document.getElementsByTagName('input')[4].value = '" + Pedido.getNames() + "';" +
+                "document.getElementsByTagName('span')[1].innerHTML = '"+ Pedido.getCosteTot() + "';" +
+                "document.getElementsByTagName('input')[5].value = '"+ Pedido.getCosteTot() + "';";
 
             myWebView.setWebViewClient(new WebViewClient() {
                 @Override

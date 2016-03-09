@@ -18,16 +18,12 @@ import android.view.MenuItem;
 import com.sanzfdu.cafeteriaetsib.R;
 import com.sanzfdu.cafeteriaetsib.bl.ListOfThings;
 
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity implements FragmentDrawer.FragmentDrawerListener {
 
     private Toolbar mToolbar;
-    private List<String> titulos = new ArrayList<String>();
     private FragmentDrawer drawerFragment;
-    String[] aux;
 
 
     @Override
