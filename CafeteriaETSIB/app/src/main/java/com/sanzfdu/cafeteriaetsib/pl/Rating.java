@@ -17,13 +17,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.sanzfdu.cafeteriaetsib.dl.Constants;
 import com.sanzfdu.cafeteriaetsib.R;
 import com.sanzfdu.cafeteriaetsib.bl.DataListAdapterRate;
-import com.sanzfdu.cafeteriaetsib.bl.ListOfThings;
 import com.sanzfdu.cafeteriaetsib.bl.NetworkConnect;
-import com.sanzfdu.cafeteriaetsib.bl.Pedido;
 import com.sanzfdu.cafeteriaetsib.bl.TextAdapter;
-import com.sanzfdu.cafeteriaetsib.bl.DataListAdapter;
 import com.sanzfdu.cafeteriaetsib.bl.MySQL;
 import com.sanzfdu.cafeteriaetsib.dl.Bocata;
 
@@ -66,7 +64,7 @@ public class Rating extends Fragment {
         lv = (ListView)rootView.findViewById(R.id.listado);
         lbocata = new ArrayList<Bocata>();
 
-         MySQL cn = new MySQL(getActivity().getApplicationContext(),"bocatasUni.db",null,1);
+         MySQL cn = new MySQL(getActivity().getApplicationContext(),"bocatasUni.db",null, Constants.vers);
 
         SQLiteDatabase db = cn.getReadableDatabase();
         //OJOOOOOO el rateo lo mete el usuario??? SI ES ASI AQUI TENEMOS QUE HACER OTRO METODO PARA QUE EL USUARIO PUEDA METER EN LA BASE DE DATOS el valor

@@ -14,28 +14,13 @@ public class StringsDB {
     //Structure = "Bagg_name,price,rate,fav,old:ingr1,ingr2;
     // Bagg_name,price,rate,fav,old:ingr1,ingr2,ingr3;...}
 
-    String str = "Bacon,2.0,0.0,0.0,0:Bacon;Bacon_Queso,2.10,0.0,0.0,0:Bacon,Queso;Calamares,2.45,0.0,0.0,0:Calamares,Lechuga,Mayonesa;" +
-            "Caida,3.60,3.0,0.0,0:Bacon,Queso,Pechuga empanada,Huevo;Soto del real, 4.30,0.0,0.0,0:Lechuga,Tomate,Huevo,Queso,Carne rara;" +
-            "Submarino,3.60,0.0,0.0,0:Bacon,Queso,Huevo,Lomo;Haiti,3.5,2.0,0.0,0:Bacon,Pechuga de pollo,Queso,Huevo;Varadero,3.10,3.0,0.0,0:Lomo,Queso,Pimiento,Cebolla;" +
-            "Vikingo,3.60,1.0,0.0,0:Ternera,Jamon_York,Queso,Mayonesa;Cubanito Bacon Vegetal,4.25,2.0,0.0,0:Lomo,Queso,Pimiento,Huevo,Cebolla,Bacon,Lechuga,Tomate;" +
-            "Cubanito Bacon,3.90,2.0,0.0,0:Lomo,Queso,Pimiento,Huevo,Cebolla,Bacon;Cubanito,3.60,2.0,0.0,0:Lomo,Queso,Pimiento,Huevo,Cebolla;" +
-            "Martutene,4.3,2.0,0.0,0:Pimientos Verdes,Lomo,Jamon Serrano,Queso,Atún;Triste,1.80,1.0,0.0,0:Queso,Lechuga,Tomate,Mayonesa,Cebolla;" +
-            "Sujetador,3.4,2.0,0.0,0:Huevos(2),Queso,Lomo;Aperribai,4.0,4.0,0.0,0:Salchicha,Bacon,Lomo,Queso;" +
-            "Julius,3.25,2.0,0.0,0:Lechuga,Tomate,Pechuga empanada,Salsa cesar,Queso;Titanic,5.10,4.0,0.0,0:Lomo(extra),Queso,Huevo,Bacon extra,Pechuga de pollo,Mayonesa,Lechuga,Tomate;" +
-            "Menu Feliz,4.5,5.0,0.0,0:Hamburguesa,Lechuga,Tomate,Cebolla,Mayonesa,Huevo,Bacon,Coca cola,Patatas fritas;" +
-            "Hamburguesa,2.70,3.5,0,0:Hamburguesa,Lechuga,Tomate,Cebolla,Mayonesa;Hamburguesa Huevo,3.15,3.0,0,0:Hamburguesa,Lechuga,Tomate,Cebolla,Mayonesa,Huevo;" +
-            "Hamburguesa Bacon,3.15,3.0,0,0:Hamburguesa,Lechuga,Tomate,Cebolla,Mayonesa,Bacon;Hamburguesa Completa,3.55,3.0,0,0:Hamburguesa,Lechuga,Tomate,Cebolla,Mayonesa,Huevo,Bacon;" +
-            "Hamburguesa Doble de Carne,3.75,2.5,0,0:Hamburguesa(2),Lechuga,Tomate,Cebolla,Mayonesa;Hamburguesa Completa Doble de Carne,2.70,2.5,0,0:Hamburguesa(2),Lechuga,Tomate,Cebolla,Mayonesa,Bacon,Huevo;"+
-            "Imperium,3.75,5.0,0.0,0:Lechuga,Tomate,Pechuga empanada,Salsa cesar,Pimiento,Bacon,Queso;" +
-            "Ave cesar,2.75,4.0,0.0,0:Pechuga empanada,Salsa cesar,Lechuga,Tomate;Pumuky,2.85,4.0,0.0,0:Lechuga,Tomate,Huevo,Bacon,Queso;" +
-            "VDP vegetal de pollo,2.45,4.0,0.0,0:Lechuga,Tomate,Pollo,Mayonesa;Jamaika Vegetal,3.60,0,0,0:Bacon,Queso,Huevo,Pollo,Lechuga,Tomate;" +
-            "Jamaika,3.30,0,0,0:Bacon,Queso,Huevo,Pollo;Chorizo Frito con Pimientos Verdes,2.90,0,0,0:Chorizo,Pimientos Verdes;" +
-            "Angus,3.65,0,0,0:Pechuga empanada,Lechuga,Tomate,Queso,Bacon;";
+    private String str =null;
     List<String> baggs =new ArrayList<String>();
     List<String> ingrs =new ArrayList<String>();
     List <String> baggHasIngr  =new ArrayList<String>();
 
-    public StringsDB(){
+    public StringsDB(String s){
+        str = s;
         fillLists();
     }
 

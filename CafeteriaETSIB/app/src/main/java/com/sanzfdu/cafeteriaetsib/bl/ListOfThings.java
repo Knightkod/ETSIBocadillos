@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.sanzfdu.cafeteriaetsib.dl.Constants;
 import com.sanzfdu.cafeteriaetsib.dl.Bocata;
 import com.sanzfdu.cafeteriaetsib.dl.Ingrediente;
 
@@ -28,7 +29,7 @@ public class ListOfThings {
         /*Nota: el null es porque no tenemos un where y por tanto no tienes un array o elemento para indicar en base a que array de algo vas a buscar,
         si le pones un noseque=? luego le pones una coma y lo que quieres buscar y ya esta*/
 
-        MySQL cn = new MySQL(activityContext, "bocatasUni.db", null, 1);
+        MySQL cn = new MySQL(activityContext, "bocatasUni.db", null, Constants.vers);
 
         SQLiteDatabase db = cn.getReadableDatabase();
 
@@ -51,7 +52,7 @@ public class ListOfThings {
         /*NOTA: SQLiteStatement para escribir en la base de datos, tirar el string y ya
     en cambio, SQLiteDatabase es para coger de la base de datos, un puntero para ir pillando lo que necesitemos
     de la base de datos*/
-       System.out.println(lbocata.size());
+      // System.out.println(lbocata.size());
     }
 
 

@@ -15,8 +15,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.sanzfdu.cafeteriaetsib.dl.Constants;
 import com.sanzfdu.cafeteriaetsib.R;
-import com.sanzfdu.cafeteriaetsib.bl.ListOfThings;
 import com.sanzfdu.cafeteriaetsib.bl.NetworkConnect;
 import com.sanzfdu.cafeteriaetsib.bl.Pedido;
 import com.sanzfdu.cafeteriaetsib.bl.TextAdapter;
@@ -69,7 +69,7 @@ public class Activity_fav extends Fragment{
         lv = (ListView)rootView.findViewById(R.id.listado);
         //Cogemos donde ira el listado
         lbocata = new ArrayList<Bocata>();
-        MySQL cn = new MySQL(getActivity().getApplicationContext(),"bocatasUni.db",null,1);
+        MySQL cn = new MySQL(getActivity().getApplicationContext(),"bocatasUni.db",null, Constants.vers);
 
         SQLiteDatabase db = cn.getReadableDatabase();
 

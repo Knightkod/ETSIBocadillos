@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.sanzfdu.cafeteriaetsib.dl.Constants;
 import com.sanzfdu.cafeteriaetsib.R;
 import com.sanzfdu.cafeteriaetsib.bl.DataListAdapter;
 import com.sanzfdu.cafeteriaetsib.bl.ListOfThings;
@@ -209,7 +210,7 @@ public class Filter extends Fragment {
         String query = null;
 
         if(0 < s.size()) {
-            MySQL cn = new MySQL(getActivity().getApplicationContext(), "bocatasUni.db", null, 1);
+            MySQL cn = new MySQL(getActivity().getApplicationContext(), "bocatasUni.db", null, Constants.vers);
             SQLiteDatabase db = cn.getReadableDatabase();
             for (int i = 0; i < s.size(); i++) {
                 aux.add(s.get(i));//OJOOOO aux hay que reiniciarlo que si no estoy pidiendo cada vez en base a mas ingredientes
@@ -329,7 +330,7 @@ public class Filter extends Fragment {
         if(0<s.size()){
 
             query = MySQL.createQuery(s,"Bocatas","nombre","OR");
-        MySQL cn = new MySQL(getActivity().getApplicationContext(),"bocatasUni.db",null,1);
+        MySQL cn = new MySQL(getActivity().getApplicationContext(),"bocatasUni.db",null,Constants.vers);
         SQLiteDatabase db = cn.getReadableDatabase();
         Cursor cBagg = null;
         cBagg = db.rawQuery(query, null);

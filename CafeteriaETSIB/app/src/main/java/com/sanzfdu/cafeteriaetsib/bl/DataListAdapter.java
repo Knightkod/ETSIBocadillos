@@ -15,6 +15,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sanzfdu.cafeteriaetsib.dl.Constants;
 import com.sanzfdu.cafeteriaetsib.R;
 import com.sanzfdu.cafeteriaetsib.dl.Bocata;
 
@@ -127,7 +128,7 @@ public class DataListAdapter extends BaseAdapter {
         //No hace falta porque SIEMPRE lee de la db cuando vuelvo a la layout al parecer
         //lbagg.get(pos).setFav(fav);
         //Lo guarda en la database
-        MySQL cn = new MySQL(context,"bocatasUni.db",null,1);
+        MySQL cn = new MySQL(context,"bocatasUni.db",null, Constants.vers);
         SQLiteDatabase db = cn.getWritableDatabase();
 
         ContentValues val = new ContentValues();

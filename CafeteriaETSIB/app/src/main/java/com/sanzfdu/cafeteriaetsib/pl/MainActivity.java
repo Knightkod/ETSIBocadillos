@@ -2,6 +2,7 @@ package com.sanzfdu.cafeteriaetsib.pl;
 
 
 
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -15,12 +16,20 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.sanzfdu.cafeteriaetsib.dl.Constants;
 import com.sanzfdu.cafeteriaetsib.R;
-import com.sanzfdu.cafeteriaetsib.bl.ListOfThings;
+import com.sanzfdu.cafeteriaetsib.bl.CallAPI;
+import com.sanzfdu.cafeteriaetsib.bl.InterfaceCallAPI;
+import com.sanzfdu.cafeteriaetsib.bl.JSONParser;
+import com.sanzfdu.cafeteriaetsib.bl.MySQL;
+import com.sanzfdu.cafeteriaetsib.bl.NetworkConnect;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
-
-public class MainActivity extends ActionBarActivity implements FragmentDrawer.FragmentDrawerListener {
+public class MainActivity extends ActionBarActivity implements InterfaceCallAPI,FragmentDrawer.FragmentDrawerListener {
 
     private Toolbar mToolbar;
     private FragmentDrawer drawerFragment;
@@ -41,10 +50,14 @@ public class MainActivity extends ActionBarActivity implements FragmentDrawer.Fr
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), mToolbar);
         drawerFragment.setDrawerListener(this);
-
         //para que se ejecute una sola vez al iniciar la app
-        ListOfThings lof = new ListOfThings();
-        lof.fillLists(getApplicationContext());
+        if(NetworkConnect.compruebaConexion(getApplicationContext())) {
+            //conectarse para bajar la version y la db actual
+            CallAPI callAPI = new CallAPI(this);
+            callAPI.execute(getApplicationContext().getResources().getString(R.string.URL_Version));
+
+
+        }
         // display the first navigation drawer view on app launch
         displayView(0);
 
@@ -64,7 +77,6 @@ public class MainActivity extends ActionBarActivity implements FragmentDrawer.Fr
         ejecuta el OnUpgrade de la clase MySQL, con lo que es facil actualizar todo remotamente, pero
         es importante tener en cuenta que tambien habria que actualizar el string de StringsDB*/
 
-        //MySQL cn = new MySQL(getApplicationContext(),"bocatasUni.db",null,1);
 
         return true;
     }
@@ -138,5 +150,24 @@ public class MainActivity extends ActionBarActivity implements FragmentDrawer.Fr
             getSupportActionBar().setTitle(title);
         }
     }
+
+    @SuppressWarnings("unchecked")
+    public void parseCallResponse(JSONObject json) {
+        int vers;
+        try {
+            JSONArray versiones = json.getJSONArray("results");
+            Constants.vers = JSONParser.parseVersion( versiones );
+            vers = Constants.vers;
+            if(0<vers) {
+                MySQL cn = new MySQL(getApplicationContext(),"bocatasUni.db", null, vers);
+                cn.getWritableDatabase();
+                //cn.close();
+
+            }
+        } catch (JSONException e) {
+
+        }
+    }
+
 }
 
