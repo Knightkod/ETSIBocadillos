@@ -118,13 +118,17 @@ sepa filtrar en base a eso*/
                 return 0;
             }
         };
+        //En el caso de la antiguedad (OLD) los simbolos de mayor y menor van al revés para que los sort
+        //de más arriba los ordenen de mas reciente a menos. Si estuvieran los simbolos como en el
+        //RATE o el FAV, los ordenaria de mas viejo (la posicion mas baja de la lista, p.ej la posicion 0)
+        //al mas nuevo (quedarian los nuevos al final de la lista, y no interesa)
         public static Comparator<Bocata> OLD = new Comparator<Bocata>() {
             @Override
             public int compare(Bocata lhs, Bocata rhs) {
-                if(lhs.getAntiguedad() < rhs.getAntiguedad()){
+                if(lhs.getAntiguedad() > rhs.getAntiguedad()){
                     return 1;
                 }
-                if(lhs.getAntiguedad() > rhs.getAntiguedad())
+                if(lhs.getAntiguedad() < rhs.getAntiguedad())
                 {
                     return -1;
                 }

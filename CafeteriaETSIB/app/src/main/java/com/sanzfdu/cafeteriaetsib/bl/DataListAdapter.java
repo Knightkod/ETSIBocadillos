@@ -112,8 +112,8 @@ public class DataListAdapter extends BaseAdapter {
 
                 if(userBool) {
                     //QUITAR IPSO FACTO LA PARTE QUE MUESTRA LA POSICION, NO HACE FALTA
-                    Toast.makeText(context, "Añadido a favoritos el elemento " + Integer.toString(pos) + " con una puntuacion de"
-                            + Float.toString(rating) + ".\n", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Añadido a favoritos con una puntuacion de "
+                            + Float.toString(rating) + " estrellas\n", Toast.LENGTH_SHORT).show();
                     setBaggFav(pos, rating);
                 }
             }
@@ -151,9 +151,10 @@ public class DataListAdapter extends BaseAdapter {
         db.update("Bocatas", val, "Nombre='" + lbagg.get(pos).getNombre() + "'", null);
         //Aqui si hemos metido los ' para hacer el update en base al String Nombre_del_bocata
         db.close();
-
-        ListOfThings.lbocata.get(pos).setFav(fav);
-
+        for(int i = 0;i<ListOfThings.lbocata.size();i++) {
+            if (ListOfThings.lbocata.get(i).getNombre().equals(lbagg.get(pos).getNombre()))
+                ListOfThings.lbocata.get(i).setFav(fav);
+        }
     }
 
     public String createText(Bocata bagg){
