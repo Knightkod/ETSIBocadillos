@@ -18,6 +18,7 @@ body {
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
   background: #b84e00;
+  width:100%;
 }
 
 .clientTable {

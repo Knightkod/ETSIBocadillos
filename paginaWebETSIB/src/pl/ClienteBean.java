@@ -100,13 +100,19 @@ public class ClienteBean implements Serializable{
 		double aux;					
 		if(ejb.comprExistencia(dni,password)){
 			if(ejb.comprFormatoHora(horaRecogida)){
-					cliente3=ejb.getOneCli(dni);				
-					aux = Double.parseDouble(cliente3.getSaldo()) - Double.parseDouble(costeTotal);
+					cliente3=ejb.getOneCli(dni);	
+					
+					aux = Double.parseDouble(cliente3.getSaldo()) 
+							- Double.parseDouble(costeTotal);
 					if(aux > 0){
 						ejb.remCli(dni);
 						cliente3.setHoraRecogida(horaRecogida);
-						cliente3.setSaldo(String.valueOf(aux));	
-						cliente3.setPedidoActual(pedidoActual);
+						cliente3.setSaldo(String.valueOf(aux));
+						
+						if(cliente3.getPedidoActual()==null || cliente3.getPedidoActual()=="")
+							cliente3.setPedidoActual(pedidoActual);
+						else
+							cliente3.setPedidoActual(cliente3.getPedidoActual()+","+pedidoActual);
 						ejb.setCli(cliente3);
 						authResp="Pedido pagado y enviado";
 					}else{

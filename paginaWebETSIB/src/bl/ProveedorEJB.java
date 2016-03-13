@@ -117,15 +117,17 @@ public class ProveedorEJB {
     }
     public void actualizaVersion(){
 		Gestion aux=new Gestion();
+	    
 		List<Gestion>listaVers = getLVers();
 		if(listaVers != null && listaVers.size()!=0){
-		aux.setVersion(listaVers.get(0).getVersion()+1);
-		remVers(listaVers.get(0).getVersion());
+			aux.setVersion((listaVers.get(0).getVersion()+1));
+			remVers(listaVers.get(0).getVersion());
 		}else{
 			aux.setVersion(0);
 		}
 		setVers(aux);		
 	}
+    
     
     ///////////////////////////////////////////////////////////
 }

@@ -37,7 +37,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `clients`.`Gestion` ;
 
 CREATE TABLE IF NOT EXISTS `clients`.`Gestion` (
-  `version` INT(10) NOT NULL DEFAULT 0,
+  `version` INT(20) NOT NULL DEFAULT 0,
   PRIMARY KEY (`version`))
 ENGINE = InnoDB;
 

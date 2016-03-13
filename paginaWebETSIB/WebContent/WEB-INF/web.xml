@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" 
+id="WebApp_ID" version="3.1">
   <display-name>paginaWebETSIB</display-name>
   <welcome-file-list>
-    <welcome-file>usuarioAuth.xhtml</welcome-file>
+    <welcome-file>faces/usuarioAuth.xhtml</welcome-file>
   </welcome-file-list>
   <servlet>
     <servlet-name>Faces Servlet</servlet-name>
@@ -33,4 +36,11 @@
     <description>All members of MyRole</description>
         <role-name>MyRole</role-name>
   </security-role>
+  <!-- Este segundo mapeo es para la parte de rest, para los GET que permiten bajarse la base de datos-->
+<servlet-mapping>
+<!-- Ese nombre es para que sepa que tiene que mapear estas direcciones en concreto, 
+los rest van con ese patron de url, a eso se refiere -->
+<servlet-name>javax.ws.rs.core.Application</servlet-name>
+<url-pattern>/rest/*</url-pattern>
+</servlet-mapping>
 </web-app>

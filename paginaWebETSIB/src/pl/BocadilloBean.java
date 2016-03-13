@@ -9,7 +9,6 @@ import javax.faces.bean.RequestScoped;
 
 import bl.ProveedorEJB;
 import dl.Bocata;
-import dl.Gestion;
 
 @ManagedBean
 @RequestScoped
@@ -49,11 +48,7 @@ public class BocadilloBean implements Serializable{
 
 	public void borraBoc(String nombre){
 		ejb.remBoc(nombre);
-		Gestion aux=new Gestion();
-		int vers = ejb.getLVers().get(0).getVersion();
-		aux.setVersion(vers-1);							//Mejor + o - 1??? depende como vaya a ir la app remota
-		ejb.remVers(vers);
-		ejb.setVers(aux);
+		ejb.actualizaVersion();
 	}
 	
 	public void modificaAntiguedadBoc(Bocata boc){

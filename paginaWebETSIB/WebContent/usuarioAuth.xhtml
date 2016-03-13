@@ -27,10 +27,12 @@
 			</p>
 			<p>
 			<h:outputLabel value="Pedido:" styleClass="label"></h:outputLabel>
-			<h:inputText id="pedidoActual" value="#{clienteBean.cliente3.pedidoActual}" styleClass="DNI"></h:inputText><br/>	
+			<h:outputText value="as" styleClass="label"></h:outputText >
+			<h:inputHidden id="pedidoActual" value="#{clienteBean.cliente3.pedidoActual}" styleClass="DNI"></h:inputHidden><br/>	
 			</p><p> 
 			<h:outputLabel styleClass="label">A pagar:</h:outputLabel>
-			<h:inputText id="costeTotal" value="#{clienteBean.costeTotal}" styleClass="DNI"></h:inputText><br/>	
+			<h:outputText value="as" styleClass="label"></h:outputText >
+			<h:inputHidden id="costeTotal" value="#{clienteBean.costeTotal}" styleClass="DNI"></h:inputHidden><br/>	
 			</p>
 		
 			<h:commandButton actionListener="#{clienteBean.comprAndBuy(clienteBean.cliente3.dni,clienteBean.cliente3.password,
