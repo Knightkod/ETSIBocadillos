@@ -26,6 +26,7 @@ public class MySQL extends SQLiteOpenHelper implements InterfaceCallAPI{
     private Context context;
     private SQLiteDatabase db;
     private boolean comprUpgrade=false;
+    public static boolean needsUpgrade=false;
 
     //QUE CAMPOS TIENE LA DB???
     String sqlC = "CREATE TABLE ";
@@ -35,6 +36,7 @@ public class MySQL extends SQLiteOpenHelper implements InterfaceCallAPI{
     public MySQL(Context context,String name, SQLiteDatabase.CursorFactory factory,int version){
         super(context,name,factory,version);
         this.context=context;
+
     }
 
     /*Cuando se crea un elemento de esta clase MySQL se comprueba si la database existe. Si es asi,
@@ -94,12 +96,19 @@ public class MySQL extends SQLiteOpenHelper implements InterfaceCallAPI{
     //Cuando la version de la base de datos cambia, actualiza lo que le decimos
     @Override
     public void onUpgrade(SQLiteDatabase db,int oldVersion, int newVersion){
+        needsUpgrade=true;
+        System.out.println("Necesito descargar la nueva version");
         obtainBaggs(db);
         db.execSQL(sqlD.concat("Bocatas"));
         db.execSQL(sqlD.concat("Ingredientes"));
         db.execSQL(sqlD.concat("Bocata_has_ingrediente"));
         comprUpgrade=true;
         onCreate(db);
+    }
+    @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion){
+        //en este caso no queremos que haga nada, lo metemos para que si viene una version vieja
+        //no nos rompa las cosas, nada mas
     }
     //Para guardar los favs ya introducidos al borrar la vieja db
     public void obtainBaggs(SQLiteDatabase db){
@@ -179,8 +188,10 @@ public class MySQL extends SQLiteOpenHelper implements InterfaceCallAPI{
         }
         comprUpgrade=false;
         db.execSQL(addStr);         //NOTA: Cuidado no este dentro del for, si no estamos metiendo varias veces los mismos elementos en la db
+        db.close();
         ListOfThings lof = new ListOfThings();
         lof.fillLists(context);
+
     }
 
     public List<Bocata> extractData(Cursor cBoc, SQLiteDatabase db){
@@ -212,7 +223,7 @@ public class MySQL extends SQLiteOpenHelper implements InterfaceCallAPI{
 
             do {
                 cIngr = db.rawQuery("SELECT * FROM Ingredientes WHERE Nombre='" + c.getString(0) + "'", null);
-                System.out.println(c.getString(0));
+                System.out.println(" "+c.getString(0));
                 if (cIngr.moveToFirst()) {
                     ingred = new Ingrediente(cIngr.getString(0), null);
                     lingr.add(ingred);
@@ -268,14 +279,15 @@ public class MySQL extends SQLiteOpenHelper implements InterfaceCallAPI{
        for(int i=0;i<lboc.size();i++)
        {
            for(int j=0;j<lbagg.size();j++){
-               if(lbagg.get(j).getNombre()==lboc.get(i).getNombre()) {
+               if(lbagg.get(j).getNombre().equals(lboc.get(i).getNombre())){//NO SE PUEDE PONER STRING==STRING, es CON EQUALS!
                    lboc.get(i).setFav(lbagg.get(j).getFav());
+                   System.out.println("Bocadillo"+lboc.get(i).getNombre()+"con fav"+lboc.get(i).getFav()+"localizado");
                    j=lbagg.size();
                }
            }
 
        }
-       System.out.println("Estoy acabando de rellenar los bocadillos fav");
+       //System.out.println("Estoy acabando de rellenar los bocadillos fav");
        return lboc;
    }
 
@@ -285,7 +297,7 @@ public class MySQL extends SQLiteOpenHelper implements InterfaceCallAPI{
             for (int j = 0; j < lBoc.get(i).getIngredientes().size(); j++) {
                 if (!lIngrString.contains(lBoc.get(i).getIngredientes().get(j).getNombre())) {//solo si no estan ya annadidos
                     lIngrString.add(lBoc.get(i).getIngredientes().get(j).getNombre());//Guarda ingrediente a ingrediente
-                    System.out.println(lIngrString.get(j));
+                    //System.out.println(lIngrString.get(j));
                 }
             }
         }

@@ -1,8 +1,6 @@
 package com.sanzfdu.cafeteriaetsib.pl;
 
 
-
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -16,6 +14,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.sanzfdu.cafeteriaetsib.bl.ListOfThings;
 import com.sanzfdu.cafeteriaetsib.dl.Constants;
 import com.sanzfdu.cafeteriaetsib.R;
 import com.sanzfdu.cafeteriaetsib.bl.CallAPI;
@@ -57,6 +56,10 @@ public class MainActivity extends ActionBarActivity implements InterfaceCallAPI,
             callAPI.execute(getApplicationContext().getResources().getString(R.string.URL_Version));
 
 
+        }
+        else {
+            ListOfThings lof = new ListOfThings();
+            lof.fillLists(getApplicationContext());
         }
         // display the first navigation drawer view on app launch
         displayView(0);
@@ -161,7 +164,12 @@ public class MainActivity extends ActionBarActivity implements InterfaceCallAPI,
             if(0<vers) {
                 MySQL cn = new MySQL(getApplicationContext(),"bocatasUni.db", null, vers);
                 cn.getWritableDatabase();
-                //cn.close();
+                if(!MySQL.needsUpgrade) {
+                    System.out.println("Tengo la version mas actual");
+                    ListOfThings lof = new ListOfThings();
+                    lof.fillLists(getApplicationContext());
+                    //cn.close();
+                }
 
             }
         } catch (JSONException e) {

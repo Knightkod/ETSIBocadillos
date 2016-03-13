@@ -24,6 +24,7 @@ public class ListOfThings {
     }
     public void fillLists(Context activityContext){
         lbocata = new ArrayList<Bocata>();
+        //lingr=new ArrayList<Ingrediente>();
         Ingrediente ingred = new Ingrediente();
 
         /*Nota: el null es porque no tenemos un where y por tanto no tienes un array o elemento para indicar en base a que array de algo vas a buscar,
@@ -46,13 +47,15 @@ public class ListOfThings {
 
             } while (cIngr.moveToNext());
         }
+        System.out.println("Estan rellenandose las listas");
+
         db.close();
         cBoc.close();
-            cIngr.close();
+        cIngr.close();
         /*NOTA: SQLiteStatement para escribir en la base de datos, tirar el string y ya
     en cambio, SQLiteDatabase es para coger de la base de datos, un puntero para ir pillando lo que necesitemos
     de la base de datos*/
-      // System.out.println(lbocata.size());
+      //System.out.println(lbocata.size());
     }
 
 

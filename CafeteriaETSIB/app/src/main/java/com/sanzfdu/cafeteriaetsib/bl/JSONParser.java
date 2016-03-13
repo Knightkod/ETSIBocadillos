@@ -67,12 +67,6 @@ public class JSONParser {
             }
         }
 
-        for(int j=0;j<lBagg.size();j++) {
-            System.out.println(j+" "+lBagg.get(j).getNombre());
-            for(int i=0;i<lBagg.get(j).getIngredientes().size();i++)
-                System.out.println(i+" "+lBagg.get(j).getIngredientes().get(i).getNombre());
-        }
-
         return lBagg;
     }
 }
