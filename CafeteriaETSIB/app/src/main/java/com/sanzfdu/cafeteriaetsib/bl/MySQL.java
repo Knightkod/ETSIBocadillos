@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.sanzfdu.cafeteriaetsib.R;
 import com.sanzfdu.cafeteriaetsib.dl.Bocata;
+import com.sanzfdu.cafeteriaetsib.dl.Constants;
 import com.sanzfdu.cafeteriaetsib.dl.Ingrediente;
 
 import org.json.JSONArray;
@@ -104,6 +105,7 @@ public class MySQL extends SQLiteOpenHelper implements InterfaceCallAPI{
         db.execSQL(sqlD.concat("Bocata_has_ingrediente"));
         comprUpgrade=true;
         onCreate(db);
+        Constants.mProgDiag.dismiss();//Para cerrar el mensaje de texto
     }
     @Override
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion){

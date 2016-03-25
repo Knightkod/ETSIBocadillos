@@ -1,6 +1,7 @@
 package com.sanzfdu.cafeteriaetsib.pl;
 
 
+import android.app.ProgressDialog;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -33,7 +34,6 @@ public class MainActivity extends ActionBarActivity implements InterfaceCallAPI,
     private Toolbar mToolbar;
     private FragmentDrawer drawerFragment;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +52,9 @@ public class MainActivity extends ActionBarActivity implements InterfaceCallAPI,
         //para que se ejecute una sola vez al iniciar la app
         if(NetworkConnect.compruebaConexion(getApplicationContext())) {
             //conectarse para bajar la version y la db actual
+            Constants.mProgDiag=ProgressDialog.show(this, null,"Actualizando listado bocadillos...", true);//2º param=titulo,3er param=texto
             CallAPI callAPI = new CallAPI(this);
             callAPI.execute(getApplicationContext().getResources().getString(R.string.URL_Version));
-
-
         }
         else {
             ListOfThings lof = new ListOfThings();
@@ -169,9 +168,11 @@ public class MainActivity extends ActionBarActivity implements InterfaceCallAPI,
                     ListOfThings lof = new ListOfThings();
                     lof.fillLists(getApplicationContext());
                     //cn.close();
+                    Constants.mProgDiag.dismiss();//Para cerrar el mensaje de texto
                 }
 
             }
+
         } catch (JSONException e) {
 
         }
