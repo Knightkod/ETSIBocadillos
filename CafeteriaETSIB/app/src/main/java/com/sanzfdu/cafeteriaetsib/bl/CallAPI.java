@@ -12,10 +12,16 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.AsyncTask;
+import android.widget.Toast;
+
+import com.sanzfdu.cafeteriaetsib.dl.Constants;
 
 /**
  * Created by pablo on 10/03/16.
@@ -77,12 +83,19 @@ public class CallAPI extends AsyncTask<String, Void, JSONObject>{
         InputStream inputStream = null;
         String result = "";
         try {
-
-            // create HttpClient
-            HttpClient httpclient = new DefaultHttpClient();
-
             // make GET request to the given URL
-            HttpResponse httpResponse = httpclient.execute(new HttpGet(url));
+            HttpGet httpGet = new HttpGet(url);
+            //Enabling http params for enabling timeouts
+            HttpParams httpParams = new BasicHttpParams();
+            //setting timeouts values
+            int timeoutConnection = 3000;
+            HttpConnectionParams.setConnectionTimeout(httpParams, timeoutConnection);
+            int timeoutSocket=5000;
+            HttpConnectionParams.setSoTimeout(httpParams,timeoutSocket);
+            // create HttpClient
+            DefaultHttpClient httpclient = new DefaultHttpClient(httpParams);
+            // Obtaining the response of the server or error if timeout is done
+            HttpResponse httpResponse = httpclient.execute(httpGet);
 
             // receive response as inputStream
             inputStream = httpResponse.getEntity().getContent();
@@ -93,6 +106,8 @@ public class CallAPI extends AsyncTask<String, Void, JSONObject>{
             else
                 result = "Did not work!";
         } catch (Exception e) {
+            //Para que no quede atascado en el dialog si está apagado el servidor
+            Constants.mProgDiag.dismiss();
            System.out.println("Error al intentar obtener los objetos JSON");
         }
 
