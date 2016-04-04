@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.sanzfdu.cafeteriaetsib.R;
 import com.sanzfdu.cafeteriaetsib.dl.Bocata;
+import com.sanzfdu.cafeteriaetsib.dl.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +73,7 @@ public class DataListAdapterRate extends BaseAdapter{
                 new View.OnClickListener() {
                     public void onClick(View v) {
                         Toast.makeText(context, "Añadido al carrito 1 bocadillo " + lbagg.get(pos).getNombre() + ".", Toast.LENGTH_SHORT).show();
-                        pedido.add(lbagg.get(pos));
+                        Constants.pedido.add(lbagg.get(pos));
                     }
                 });
 

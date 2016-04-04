@@ -73,7 +73,7 @@ public class DataListAdapter extends BaseAdapter {
         button.setOnClickListener(
                 new View.OnClickListener() {public void onClick(View v) {
                         Toast.makeText( context, "Añadido al carrito 1 bocadillo "+ lbagg.get(pos).getNombre() +".",Toast.LENGTH_SHORT).show();
-                        pedido.add(lbagg.get(pos));
+                        Constants.pedido.add(lbagg.get(pos));
                 }
                 });
 

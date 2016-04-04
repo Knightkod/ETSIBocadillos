@@ -4,7 +4,9 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.sanzfdu.cafeteriaetsib.dl.Bocata;
+import com.sanzfdu.cafeteriaetsib.dl.Constants;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +27,7 @@ public class Pedido {
         boolean bool = false;
 
         List<Bocata> pedido;
-        pedido=dListAdapter.getPedido();
+        pedido= Constants.pedido;
 
         for(int i = 0; i < pedido.size();i++){
             if(i==0)
@@ -40,7 +42,8 @@ public class Pedido {
             //Falta poner la funcion de comprobacion de internet y de compra, que va a ir en otra clase
             /*Toast.makeText(context, "Pedido enviado. El pedido consta de los bocadillos " + names +
                     " y el precio es de " + costeTot + " euros.", Toast.LENGTH_SHORT).show();*/
-        bool=true;
+            bool=true;
+            Constants.pedido=new ArrayList<Bocata>();
         }
         return bool;
     }

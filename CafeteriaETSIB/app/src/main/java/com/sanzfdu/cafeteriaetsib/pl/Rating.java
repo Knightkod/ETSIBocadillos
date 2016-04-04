@@ -139,7 +139,7 @@ public class Rating extends Fragment {
                     float costeTot=0;
                     String names="";
                     List<Bocata> pedido;
-                    pedido=dListAdapter.getPedido();
+                    pedido=Constants.pedido;
 
                     for(int i = 0; i < pedido.size();i++){
                         if(i==0)
@@ -151,6 +151,7 @@ public class Rating extends Fragment {
                     if(pedido.size()==0)
                         Toast.makeText(getActivity().getApplicationContext(), "Debe seleccionar al menos un bocadillo para poder comprar", Toast.LENGTH_SHORT).show();
                     else {
+                        Constants.pedido=new ArrayList<Bocata>();
                         FragmentManager fragmentManager = getFragmentManager();
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                         Fragment_web fragWeb = new Fragment_web();
