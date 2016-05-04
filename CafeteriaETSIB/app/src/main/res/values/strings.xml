@@ -10,7 +10,7 @@
     <!--Nombre de las layouts a acceder-->
     <string name="nav_item_menu_principal">Inicio</string>
     <string name="nav_item_list_complete_filters">Lista Completa</string>
-    <string name="nav_item_filter">Filtrado por ingredinetes</string>
+    <string name="nav_item_filter">Filtrado por ingredientes</string>
     <string name="nav_item_activity_fav">Favoritos</string>
     <string name="nav_item_latest">Recientes</string>
     <string name="nav_item_rating">Bocadillos Votados</string>
@@ -33,7 +33,7 @@
     <!--Titulos de los layouts-->
     <string name="title_menu_principal">Inicio</string>
     <string name="title_list_complete_filters">Lista Completa</string>
-    <string name="title_filter">Filtrado por ingredinetes</string>
+    <string name="title_filter">Filtrado por ingredientes</string>
     <string name="title_activity_fav">Favoritos</string>
     <string name="title_latest">Recientes</string>
     <string name="title_rating">Bocadillos Votados</string>

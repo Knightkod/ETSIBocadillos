@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="text_size">16</integer>
+    <integer name="text_size_big">24</integer>
 
 </resources>

@@ -2,12 +2,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
 
-    <!--<item
-        android:id="@+id/view_headline"
-        android:title="view_headline"
+    <item
+        android:id="@+id/show_cart"
+        android:title="show cart"
         android:orderInCategory="250"
-        android:icon="@drawable/ic_view_headline"
-        app:showAsAction="ifRoom" />-->
+        android:icon="@drawable/icon_cart"
+        app:showAsAction="ifRoom" />
 
 
     <!--Esto es para settings, pero hasta que ponga el cambio de idiomas... se queda asi-->

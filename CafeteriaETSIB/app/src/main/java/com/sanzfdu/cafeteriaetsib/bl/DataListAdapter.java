@@ -112,8 +112,8 @@ public class DataListAdapter extends BaseAdapter {
 
                 if(userBool) {
                     //QUITAR IPSO FACTO LA PARTE QUE MUESTRA LA POSICION, NO HACE FALTA
-                    Toast.makeText(context, "Añadido a favoritos el elemento " + Integer.toString(pos) + " con una puntuacion de"
-                            + Float.toString(rating) + ".\n", Toast.LENGTH_SHORT).show();
+                   /* Toast.makeText(context, "Añadido a favoritos el elemento " + Integer.toString(pos) + " con una puntuacion de"
+                            + Float.toString(rating) + ".\n", Toast.LENGTH_SHORT).show();*/
                     setBaggFav(pos, rating);
                 }
             }
@@ -176,9 +176,5 @@ public class DataListAdapter extends BaseAdapter {
 
 
         return s;
-    }
-
-    public List<Bocata> getPedido(){
-        return pedido;
     }
 }

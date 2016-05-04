@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_elem"
+        android:layout_gravity="left"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="50dp"/>
+
+    <ImageButton android:id="@+id/imgButton"
+        android:src="@drawable/icon_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:layout_centerVertical="true"
+
+        />
+</RelativeLayout>

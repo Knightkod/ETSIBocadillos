@@ -8,6 +8,7 @@
     <color name="windowBackground">#E0E0E0</color>
     <color name="navigationBarColor">#000000</color>
     <color name="colorAccent">#FFCA28</color>
+    <color name="goldenColor">#FFD700</color>
 <!--textColor es el nombre de la variable que controla el color del texto, modificando este ya se
 cambia el color de fuente de todas las vistas de la aplicacion. Concretamente, lo que hace es cambio
 en TextAdapter y DataListAdapter, ademas de en checkbox_view-->

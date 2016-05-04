@@ -39,9 +39,6 @@ public class Pedido {
         if(pedido.size()==0)
             Toast.makeText(context, "Debe seleccionar al menos un bocadillo para poder comprar", Toast.LENGTH_SHORT).show();
         else {
-            //Falta poner la funcion de comprobacion de internet y de compra, que va a ir en otra clase
-            /*Toast.makeText(context, "Pedido enviado. El pedido consta de los bocadillos " + names +
-                    " y el precio es de " + costeTot + " euros.", Toast.LENGTH_SHORT).show();*/
             bool=true;
             Constants.pedido=new ArrayList<Bocata>();
         }

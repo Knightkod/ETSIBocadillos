@@ -1,31 +1,45 @@
 package com.sanzfdu.cafeteriaetsib.pl;
 
 import android.app.Activity;
-import android.support.v4.app.Fragment;
-
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.sanzfdu.cafeteriaetsib.R;
+import com.sanzfdu.cafeteriaetsib.bl.CartListAdapter;
+import com.sanzfdu.cafeteriaetsib.bl.DataListAdapter;
+import com.sanzfdu.cafeteriaetsib.bl.ListOfThings;
+import com.sanzfdu.cafeteriaetsib.bl.NetworkConnect;
+import com.sanzfdu.cafeteriaetsib.bl.Pedido;
+import com.sanzfdu.cafeteriaetsib.bl.TextAdapter;
+import com.sanzfdu.cafeteriaetsib.dl.Bocata;
+import com.sanzfdu.cafeteriaetsib.dl.Constants;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 
-public class About_us extends Fragment{
+public class CartView extends Fragment {
 
-
+    private  ListView lv;
     View rootView;
 
-    public About_us() {
+    private CartListAdapter cListAdapter;
+
+
+    //Es el string que nos va a permitir cambiar el titulo de la activity a la que pertenece este fragmento
+
+    public CartView() {
         // Constructor vacio obligatorio
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,12 +47,17 @@ public class About_us extends Fragment{
     }
 
     @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_about_us, container, false);
+        rootView = inflater.inflate(R.layout.fragment_cart, container, false);
 
         //Inicializamos los botones para que puedan cumplir su funcion al hacer click
         startButtonListening();
+
+        lv = (ListView)rootView.findViewById(R.id.listado);
+
+        cListAdapter= new CartListAdapter(getActivity().getApplicationContext());
+        lv.setAdapter(cListAdapter);
 
 
         return rootView;
@@ -53,6 +72,7 @@ public class About_us extends Fragment{
     public void onDetach() {
         super.onDetach();
     }
+
     public void startButtonListening() {
 
         Button btnRet = (Button) rootView.findViewById(R.id.buttonReturn);
@@ -69,4 +89,6 @@ public class About_us extends Fragment{
             }
         });
     }
+
+
 }

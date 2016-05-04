@@ -10,28 +10,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         />
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
     <Button android:id="@+id/buttonPay"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="50dp"
+        android:layout_weight=".50"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:text="Comprar" />
+        android:background="@drawable/shapebutton"
+        android:text="Comprar"
+        android:textColor="@color/textColorPrimary"
+        />
 
     <Button
         android:id="@+id/buttonReturn"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="50dp"
+        android:layout_weight=".50"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
-
-
-        android:text="Volver a Inicio"/>
+        android:background="@drawable/shapebutton"
+        android:text="Volver a Inicio"
+        android:textColor="@color/textColorPrimary"
+        />
+    </LinearLayout>
 <!--COMO CADA ENTRADA DE LA LISTA TIENE MAS COSAS ADEMAS DE LA LISTA (tiene el rateo
 y en el caso del filtro el checkbox) tenemos que hacer una layout adicional, que será
 la "capa" de cada elemento de esa lista-->

@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.sanzfdu.cafeteriaetsib.bl.ListOfThings;
 import com.sanzfdu.cafeteriaetsib.dl.Constants;
@@ -90,13 +91,25 @@ public class MainActivity extends ActionBarActivity implements InterfaceCallAPI,
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch(item.getItemId()) {
 
-        //Manejo de los action buttons
-        if (id == R.id.action_settings) {
-            return true;
+            //Manejo de los action buttons
+           case R.id.action_settings:
+                return true;
+
+           case R.id.show_cart:
+               if(Constants.pedido.size() <= 0) {
+                   Toast.makeText(getBaseContext(),"¡Debes añadir algun producto al carrito!\n",Toast.LENGTH_LONG).show();
+               }else {
+                   FragmentManager fragmentManager = getSupportFragmentManager();
+                   FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                   CartView cartView = new CartView();
+                   fragmentTransaction.replace(R.id.container_body, cartView);
+                   fragmentTransaction.commit();
+               }
+                return true;
+
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -176,6 +189,10 @@ public class MainActivity extends ActionBarActivity implements InterfaceCallAPI,
         } catch (JSONException e) {
 
         }
+    }
+    //método para permitir a los fragments cambiar el titulo de la ActionBar
+    public void setActionBarTitle(String title){
+        mToolbar.setTitle(title);
     }
 
 }

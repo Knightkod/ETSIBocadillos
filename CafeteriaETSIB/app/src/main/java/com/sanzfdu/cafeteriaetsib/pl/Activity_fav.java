@@ -123,6 +123,7 @@ public class Activity_fav extends Fragment{
         btnRet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((MainActivity)getActivity()).setActionBarTitle("Inicio");
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 MenuPrincipal princMen = new MenuPrincipal();

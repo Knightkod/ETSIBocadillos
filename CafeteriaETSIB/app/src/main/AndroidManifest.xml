@@ -15,6 +15,7 @@ para que salga nuestro bocatilla
         android:theme="@style/MyMaterialTheme">
         <activity
             android:name=".pl.MainActivity"
+            android:configChanges="orientation|screenSize"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,37 +23,37 @@ para que salga nuestro bocatilla
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".pl.MenuPrincipal" android:configChanges="orientation"></activity>
+        <activity android:name=".pl.MenuPrincipal"></activity>
         <activity
             android:name=".pl.Activity_fav"
             android:label="@string/title_activity_fav"
-            android:configChanges="orientation"></activity>
+          ></activity>
         <activity
             android:name=".pl.List_complete_filters"
             android:label="@string/title_list_complete_filters"
-            android:configChanges="orientation"></activity>
+            ></activity>
         <activity
             android:name=".pl.Latest"
             android:label="@string/title_latest"
-            android:configChanges="orientation"></activity>
+            ></activity>
         <activity
             android:name=".pl.Rating"
             android:label="@string/title_rating"
-            android:configChanges="orientation"></activity>
+            ></activity>
         <activity
             android:name=".pl.Randomize"
             android:label="@string/randomize"
-            android:configChanges="orientation"></activity>
+            ></activity>
         <activity
             android:name=".pl.About_us"
             android:label="@string/title_about_us"
-            android:configChanges="orientation"></activity>
+            ></activity>
         <activity
             android:name=".pl.Filter"
             android:label="@string/title_filter"
-            android:configChanges="orientation"></activity>
+            ></activity>
         <activity android:name=".pl.Fragment_web"
-            android:configChanges="orientation"></activity>
+            ></activity>
 
     </application>
 

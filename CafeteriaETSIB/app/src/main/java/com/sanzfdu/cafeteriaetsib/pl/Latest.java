@@ -55,7 +55,6 @@ public class Latest extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_latest, container, false);
-        List<String>lbaggString = new ArrayList<String>();
 
         //Inicializamos los botones para que puedan cumplir su funcion al hacer click
         startButtonListening();
@@ -63,8 +62,9 @@ public class Latest extends Fragment {
         //Metemos aqui la lista para que simplemente sea segun se carga la actividad salga la lista
         lv = (ListView)rootView.findViewById(R.id.listado);
         lbocata = new ArrayList<Bocata>();
-
-        lbocata = ListOfThings.lbocata;
+        for (int i = 0; i < ListOfThings.lbocata.size(); i++) {
+            lbocata.add(ListOfThings.lbocata.get(i));
+        }
         if(lbocata.size()!=0){
 
 
@@ -106,6 +106,7 @@ public class Latest extends Fragment {
         btnRet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((MainActivity)getActivity()).setActionBarTitle("Inicio");
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 MenuPrincipal princMen = new MenuPrincipal();
@@ -133,28 +134,4 @@ public class Latest extends Fragment {
         });
 
     }
-    public String createText(Bocata bagg){
-        String s;
-        s = "Bocata: " + bagg.getNombre()+"\n";
-        s = s.concat("Precio:"+bagg.getPrecio()+"€\n");
-
-        if(bagg.getIngredientes()!=null) {
-
-            s = s.concat("\nIngredientes:");
-
-            for (int i = 0; i < bagg.getIngredientes().size(); i++) {
-                s = s.concat(bagg.getIngredientes().get(i).getNombre()  + "");
-                if (i < bagg.getIngredientes().size() - 1) {
-                    s = s.concat(", ");
-                }
-            }
-            s = s.concat(".\n");
-        }
-
-
-        return s;
-    }
-
-
-
 }
