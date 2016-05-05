@@ -41,8 +41,8 @@
     <string name="title_randomize">Random</string>
 
     <!--Paginas web-->
-    <string name="URL_Version">http://etsibocadillos.no-ip.biz/rest/provider/vers</string>
-    <string name="URL_database">http://etsibocadillos.no-ip.biz/rest/provider/bocatas</string>
+    <string name="URL_Version">https://etsibocadillos.no-ip.biz/rest/provider/vers</string>
+    <string name="URL_database">https://etsibocadillos.no-ip.biz/rest/provider/bocatas</string>
 
 
 </resources>
