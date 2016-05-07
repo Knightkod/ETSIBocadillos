@@ -63,7 +63,6 @@ public class MainActivity extends ActionBarActivity implements InterfaceCallAPI,
         }
         // display the first navigation drawer view on app launch
         displayView(0);
-
     }
 
 

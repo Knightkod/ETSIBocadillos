@@ -1,19 +1,30 @@
 package com.sanzfdu.cafeteriaetsib.pl;
 
 import android.annotation.TargetApi;
+import android.net.http.SslCertificate;
+import android.net.http.SslError;
 import android.os.Build;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.SslErrorHandler;
 import android.webkit.ValueCallback;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.sanzfdu.cafeteriaetsib.R;
 import com.sanzfdu.cafeteriaetsib.bl.Pedido;
+
+import java.io.IOException;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 
 public class Fragment_web extends Fragment {
 
@@ -30,7 +41,8 @@ public class Fragment_web extends Fragment {
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_web, container, false);
         WebView myWebView = (WebView) rootView.findViewById(R.id.webView);
-        myWebView.loadUrl("http://etsibocadillos.no-ip.biz/usuarioAuth.xhtml");
+
+        myWebView.loadUrl(getActivity().getApplicationContext().getResources().getString(R.string.URL_auth));
         //Esta segunda parte es para autorrellenar los campos del formulario que se requieren
         WebSettings settings = myWebView.getSettings();
         settings.setJavaScriptEnabled(true);
@@ -56,10 +68,11 @@ public class Fragment_web extends Fragment {
                         });
                     }//Y este de aqui abajo solo para las versiones por debajo de la 19
                     else{
-                        
+
                     view.loadUrl(js);
                     }
                 }
+
             });
 
 
