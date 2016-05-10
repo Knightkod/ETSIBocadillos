@@ -41,8 +41,8 @@
     <string name="title_randomize">Random</string>
 
     <!--Paginas web-->
-    <string name="URL_Version">http://46.101.20.53:8080/paginaWebETSIB/faces/rest/provider/vers</string>
-    <string name="URL_database">http://46.101.20.53:8080/paginaWebETSIB/faces/rest/provider/bocatas</string>
+    <string name="URL_Version">https://etsibocadillos.me:8443/paginaWebETSIB/faces/rest/provider/vers</string>
+    <string name="URL_database">https://etsibocadillos.me:8443/paginaWebETSIB/faces/rest/provider/bocatas</string>
     <string name="URL_auth">https://etsibocadillos.me:8443/paginaWebETSIB/faces/usuarioAuth.xhtml</string>
 
 </resources>
